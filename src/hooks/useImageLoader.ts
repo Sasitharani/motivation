@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { getRandomNaturePrompt, fetchPollinationAiImage } from '../utils/pollinationAi';
 
 export interface ImageData {
   id: number;
@@ -141,16 +142,20 @@ export function useImageLoader() {
     setError(null);
 
     try {
-      // Simulate API delay for realistic experience
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      const randomIndex = Math.floor(Math.random() * DEMO_IMAGES.length);
+      const prompt = getRandomNaturePrompt();
+      const imageUrl = await fetchPollinationAiImage(prompt);
       const selectedImage = {
-        ...DEMO_IMAGES[randomIndex],
-        quote: getRandomQuote(), // Get a fresh random quote each time
-        cta: getRandomCTA() // Get a fresh random CTA each time
+        id: Date.now(),
+        src: {
+          original: imageUrl,
+          large: imageUrl,
+          medium: imageUrl,
+        },
+        alt: prompt,
+        photographer: 'Pollination AI',
+        quote: getRandomQuote(),
+        cta: getRandomCTA(),
       };
-      
       setCurrentImage(selectedImage);
     } catch (err) {
       setError('Failed to load image. Please try again.');
