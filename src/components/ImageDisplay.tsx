@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ImageIcon, Loader2 } from 'lucide-react';
-import { getRandomNaturePrompt, fetchPollinationAiImage } from '../utils/pollinationAi';
+import { getRandomPrompt, fetchPollinationAiImage } from '../utils/pollinationAi';
 
 interface ImageData {
   id: number;
@@ -27,7 +27,7 @@ export function ImageDisplay({ image, isLoading }: ImageDisplayProps) {
 
   useEffect(() => {
     if (!image) {
-      const prompt = getRandomNaturePrompt();
+      const prompt = getRandomPrompt();
       setAiPrompt(prompt);
       setLoading(true);
       fetchPollinationAiImage(prompt)

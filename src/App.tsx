@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Video } from 'lucide-react';
 import { useImageLoader } from './hooks/useImageLoader';
 import { useVideoGenerator } from './hooks/useVideoGenerator';
 import { ImageDisplay } from './components/ImageDisplay';
 import { VideoControls } from './components/VideoControls';
-import { ThemeSelector } from './components/ThemeSelector';
-import { ThemeType } from './types/theme';
 
 function App() {
-  const [theme, setTheme] = useState<ThemeType>('motivation');
   const { currentImage, isLoading: isLoadingImage, loadRandomImage } = useImageLoader();
   const { state: { isGenerating, progress }, generateVideo, canvasRef } = useVideoGenerator();
 
@@ -16,11 +13,6 @@ function App() {
     if (currentImage) {
       generateVideo(currentImage);
     }
-  };
-
-  const handleThemeChange = (newTheme: ThemeType) => {
-    setTheme(newTheme);
-    loadRandomImage();
   };
 
   // Load initial image
@@ -32,16 +24,14 @@ function App() {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
-          <ThemeSelector currentTheme={theme} onThemeChange={handleThemeChange} />
-          
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
               <Video className="w-8 h-8 text-pink-400 mr-2" />
               <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-transparent bg-clip-text">
-                Motivation Reels
+                Magical Reels
               </h1>
             </div>
-            <p className="text-gray-400">Create beautiful motivational videos in seconds.</p>
+            <p className="text-gray-400">Create beautiful magical videos in seconds.</p>
           </div>
 
           <div className="space-y-6">

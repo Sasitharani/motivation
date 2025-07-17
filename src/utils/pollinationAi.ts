@@ -1,41 +1,36 @@
-// Utility to generate a random nature prompt and fetch an image from pollination.ai
+// Utility to generate magical prompts and fetch images from pollination.ai
 
-const NATURE_PROMPTS = [
-  // Mountains
-  "Snow-capped peaks like the Himalayas or Alps",
-  "Rocky cliffs and ridges in dramatic light",
-  "Volcanic mountain such as Mount Fuji or Mount Etna",
-  "Rolling green hills and meadows at sunrise",
-  // Water Bodies
-  "A mighty river like the Ganges, Amazon, or Nile winding through a valley",
-  "A majestic waterfall such as Niagara Falls or Angel Falls",
-  "A tranquil lake like Lake Baikal or Lake Tahoe reflecting the sky",
-  "Oceans and beaches with waves and tides crashing on the shore",
-  // Forests and Trees
-  "Dense tropical rainforest like the Amazon, misty and lush",
-  "Pine and coniferous forests in the morning fog",
-  "Autumn foliage with vibrant red and orange leaves",
-  "Bamboo groves and mangroves in soft sunlight",
-  // Landscapes
-  "Desert with golden dunes like the Sahara under a blue sky",
-  "Vast grasslands and savannas with wildflowers",
-  "Deep valleys and canyons like the Grand Canyon at sunset",
-  "Plateaus and plains stretching to the horizon",
-  // Skies and Atmosphere
-  "Sunrise over a mountain landscape with colorful clouds",
-  "Starry night sky and the Milky Way above a forest",
-  "A rainbow or aurora over a peaceful lake",
-  "Dramatic cloud formations and thunderstorms over fields",
-  // Wildlife in Nature
-  "Birds flying over a serene lake at dawn",
-  "Deer grazing in a sunlit forest clearing",
-  "Fish swimming in a crystal-clear river",
-  "Butterflies fluttering in a field of wildflowers"
+const MAGICAL_PROMPTS = [
+  // Celestial and Sky
+  "Dreamy midnight blue sky with floating golden lanterns and sparkles",
+  "Shooting stars streaking across a lavender galaxy with soft glowing trails",
+  "Aurora of magical colors dancing over a mystical forest",
+  "Ethereal moonlit scene with floating dandelion seeds and sparkle trails",
+  // Magical Environments
+  "Enchanted forest with bioluminescent flowers and floating lights",
+  "Crystal cave with shimmering gems and magical light beams",
+  "Ancient magical library with floating books and glowing dust particles",
+  "Secret garden with blooming magical flowers and butterfly swarms",
+  // Fantasy Elements
+  "Magical portal with swirling colors and floating light particles",
+  "Crystal ball reflecting mystical visions with soft golden light",
+  "Ancient magical tree with glowing leaves and floating fireflies",
+  "Magical waterfall with rainbow light and floating sparkles",
+  // Atmospheric Scenes
+  "Sunset through a magical crystal prism with light rays",
+  "Mystical fog with floating fairy lights and soft gold accents",
+  "Starlit clearing with magical mushrooms and glowing butterflies",
+  "Dream-like clouds with floating magical symbols and sparkles",
+  // Magical Objects
+  "Magic wand creating trails of sparkles and light rays",
+  "Enchanted mirror reflecting magical realms and soft glows",
+  "Floating spell book with glowing runes and magical dust",
+  "Magical hourglass with shimmering stardust and time magic"
 ];
 
-export function getRandomNaturePrompt(): string {
-  const idx = Math.floor(Math.random() * NATURE_PROMPTS.length);
-  return NATURE_PROMPTS[idx];
+export function getRandomPrompt(): string {
+  const idx = Math.floor(Math.random() * MAGICAL_PROMPTS.length);
+  return MAGICAL_PROMPTS[idx];
 }
 
 export async function fetchPollinationAiImage(prompt: string): Promise<string> {

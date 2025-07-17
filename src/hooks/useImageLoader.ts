@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { getRandomNaturePrompt, fetchPollinationAiImage } from '../utils/pollinationAi';
+import { getRandomPrompt, fetchPollinationAiImage } from '../utils/pollinationAi';
 
 export interface ImageData {
   id: number;
@@ -14,7 +14,27 @@ export interface ImageData {
   cta: string;
 }
 
-// Motivational quotes collection
+// Quotes collections for different themes
+const MAGICAL_QUOTES = [
+  "Believe in the magic within you.",
+  "In every moment lies a spark of enchantment.",
+  "Let your dreams cast their spells.",
+  "Magic happens to those who believe.",
+  "Create your own enchanted story.",
+  "Every star holds a wish waiting to be made.",
+  "Your soul is a constellation of possibilities.",
+  "The most magical moments begin with 'what if...'",
+  "Let your spirit sparkle like stardust.",
+  "Dreams are where magic takes flight.",
+  ,
+  "Every sunrise brings new enchantments.",
+  "You are the magic you seek."
+];
+
+// Call-to-action collection
+const CTAS = [
+];
+
 const MOTIVATIONAL_QUOTES = [
   "Believe you can and you're halfway there.",
   "The only way to do great work is to love what you do.",
@@ -62,7 +82,8 @@ const CTA_PROMPTS = [
   "What will you do today? Share it! ✅"
 ];
 function getRandomQuote(): string {
-  return MOTIVATIONAL_QUOTES[Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length)];
+  const idx = Math.floor(Math.random() * MAGICAL_QUOTES.length);
+  return MAGICAL_QUOTES[idx];
 }
 
 function getRandomCTA(): string {
@@ -142,7 +163,7 @@ export function useImageLoader() {
     setError(null);
 
     try {
-      const prompt = getRandomNaturePrompt();
+      const prompt = getRandomPrompt();
       const imageUrl = await fetchPollinationAiImage(prompt);
       const selectedImage = {
         id: Date.now(),
